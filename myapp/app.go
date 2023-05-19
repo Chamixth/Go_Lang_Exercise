@@ -33,7 +33,7 @@ func loadApiConfig(filename string) (apiConfigData, error) {
 	if err != nil {
 		return apiConfigData{}, err
 	}
-	//unmarshal the Json data into the apiConfigData struct
+	//unmarshal the Json data into the ApiConfigData struct
 	var c apiConfigData
 	err = json.Unmarshal(bytes, &c)
 	if err != nil {
