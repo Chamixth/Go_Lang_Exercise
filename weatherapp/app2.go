@@ -34,7 +34,7 @@ func weatherDetails(c echo.Context) error {
 			Temperature float64 `json:"temp"`     //struct field for the temp
 			Humidity    int     `json:"humidity"` //struct field for the humidity
 			Pressure    int     `json:"pressure"` //struct field for the pressure
-		} `json:"main"`           //struct the field for the main weatherData with json tag
+		} `json:"main"` //struct the field for the main weatherData with json tag
 		Name string `json:"name"` //field for the city name
 	}
 
