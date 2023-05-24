@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="20be6b24-efac-4fc1-9264-c1e351c446c1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../weatherapp/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../weatherapp/app2.go" beforeDir="false" afterPath="$PROJECT_DIR$/../weatherapp/app2.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,7 +47,7 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
 }</component>
-  <component name="RunManager" selected="Go Build.go build HelloWorld.go (2)">
+  <component name="RunManager" selected="Go Build.go build myapp">
     <configuration name="go build HelloWorld.go (1)" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="myapp" />
       <working_directory value="$PROJECT_DIR$" />
@@ -62,6 +60,16 @@
     <configuration name="go build HelloWorld.go (2)" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="myapp" />
       <working_directory value="$PROJECT_DIR$" />
+      <EXTENSION ID="net.ashald.envfile">
+        <option name="IS_ENABLED" value="false" />
+        <option name="IS_SUBST" value="false" />
+        <option name="IS_PATH_MACRO_SUPPORTED" value="false" />
+        <option name="IS_IGNORE_MISSING_FILES" value="false" />
+        <option name="IS_ENABLE_EXPERIMENTAL_INTEGRATIONS" value="false" />
+        <ENTRIES>
+          <ENTRY IS_ENABLED="true" PARSER="runconfig" IS_EXECUTABLE="false" />
+        </ENTRIES>
+      </EXTENSION>
       <kind value="FILE" />
       <package value="myapp" />
       <directory value="$PROJECT_DIR$" />
@@ -77,8 +85,18 @@
       <filePath value="$PROJECT_DIR$/HelloWorld.go" />
       <method v="2" />
     </configuration>
+    <configuration name="go build myapp" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="myapp" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <package value="myapp" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$/app.go" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Go Build.go build myapp" />
         <item itemvalue="Go Build.go build HelloWorld.go (2)" />
         <item itemvalue="Go Build.go build HelloWorld.go (1)" />
         <item itemvalue="Go Build.go build HelloWorld.go" />
