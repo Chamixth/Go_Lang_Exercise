@@ -4,8 +4,10 @@ import (
 	"encoding/json"               // Package for JSON encoding and decoding
 	"fmt"                         //package for formatted IO
 	"github.com/labstack/echo/v4" //Package for building web application
-	"io/ioutil"                   //Package for IO functions
-	"net/http"                    //Package for HTTP client functionalities
+	"github.com/labstack/echo/v4/middleware"
+	"io/ioutil" //Package for IO functions
+	"math"
+	"net/http" //Package for HTTP client functionalities
 )
 
 func welcomePage(c echo.Context) error {
@@ -13,7 +15,7 @@ func welcomePage(c echo.Context) error {
 }
 
 func weatherDetails(c echo.Context) error {
-	city := c.QueryParam("city")                 // Retrieve the value of "city" query parameter
+	city := c.Param("city")                      // Retrieve the value of "city" query parameter
 	apiKey := "f49917d741bcdea1373729fe389afa13" //Api key
 	//Then created the API URL
 	url := fmt.Sprintf("https://api.openweathermap.org/data/2.5/weather?q=%s&appid=%s", city, apiKey)
@@ -30,6 +32,10 @@ func weatherDetails(c echo.Context) error {
 	}
 
 	type WeatherData struct {
+		Weather []struct {
+			Main        string `json:"main"`
+			Description string `json:"description"`
+		} `json:"weather"`
 		Main struct {
 			Temperature float64 `json:"temp"`     //struct field for the temp
 			Humidity    int     `json:"humidity"` //struct field for the humidity
@@ -44,13 +50,15 @@ func weatherDetails(c echo.Context) error {
 	}
 
 	temperatureCelcius := weatherData.Main.Temperature - 273.15 // convert the kelvin to celcius
+	roundedTemperature := math.Round(temperatureCelcius)
 
 	// Build a response map with the required fields
 	responseData := map[string]interface{}{
 		"City":        weatherData.Name,
 		"Humidity":    weatherData.Main.Humidity,
 		"Pressure":    weatherData.Main.Pressure,
-		"Temperature": temperatureCelcius,
+		"Temperature": roundedTemperature,
+		"Condition":   weatherData.Weather[0].Main, // Weather status (e.g., Clear, Rain, Snow)
 	}
 
 	return c.JSON(http.StatusOK, responseData) //return json response with weather details
@@ -58,7 +66,8 @@ func weatherDetails(c echo.Context) error {
 
 func main() {
 	e := echo.New()
-	e.GET("/welcome", welcomePage)    //route for welcome page
-	e.GET("/weather", weatherDetails) //route for weather page
-	e.Logger.Fatal(e.Start(":8080"))  //start the server on 8080 port
+	e.Use(middleware.CORS())
+	e.GET("/welcome", welcomePage)          //route for welcome page
+	e.GET("/weather/:city", weatherDetails) //route for weather page
+	e.Logger.Fatal(e.Start(":8080"))        //start the server on 8080 port
 }
